@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:dio/dio.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,35 +9,107 @@ class MyApp extends StatelessWidget {
       title: 'Material App',
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Center(
-          child: Text("Hola Mundo"),
+        body: Stack(
+          children: [
+            Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/fondo.png'),
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: 30),
+                Image.asset('assets/producto.png'),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Text(
+                    "DartTea",
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Text(
+                    "Dale un respiro a tus compilaciones y disfruta de un delicioso DartTea.",
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.normal,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Categoria",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Text(
+                              "CodeTea",
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Precio",
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Text(
+                              "\$24.0",
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 0, 126, 230),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(Icons.add),
         ),
       ),
     );
   }
-
-  // Future<void> obtenerProductos() async {
-  //   try {
-  //     // Configura el cliente DIO
-  //     Dio dio = Dio();
-
-  //     // Define la URL y las cabeceras
-  //     const String url =
-  //         'https://cmiowbexljkpzrpdudnz.supabase.co/rest/v1/productos_coffeedev';
-  //     const String supabaseKey =
-  //         'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNtaW93YmV4bGprcHpycGR1ZG56Iiwicm9sZSI6ImFub24iLCJpYXQiOjE2Njg4OTE0MTcsImV4cCI6MTk4NDQ2NzQxN30.ps1Y98EIYPv7BYDe_e5jfU1hvCmpuMetVNGnaLTA-xg';
-
-  //     // Configura las cabeceras de la petición
-  //     dio.options.headers['apikey'] = supabaseKey;
-  //     dio.options.headers['Authorization'] = 'Bearer $supabaseKey';
-
-  //     // Realiza la petición GET
-  //     Response response = await dio.get(url);
-
-  //     // Muestra los datos en la consola
-  //     print(response.data);
-  //   } catch (e) {
-  //     print('Error al obtener los productos: $e');
-  //   }
-  // }
 }
